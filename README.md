@@ -10,6 +10,7 @@ ECDSA signatures will improperly validate spoofed keys with forced public keys. 
 - https://www.rfc-editor.org/rfc/rfc6979
 - https://csrc.nist.gov/csrc/media/publications/fips/186/3/archive/2009-06-25/documents/fips_186-3.pdf
 
+
 ### Proof of Concept:
 
 ```
@@ -46,4 +47,12 @@ Successful exploitation of on the curve vulnerability!
 Results for 'On the Curve Vulnerability':
 RFC 6979: True
 FIPS-186-3: True
+```
+### Testing against OpenSSL
+
+```
+OpenSSL> dgst -sha256 -sign key.pem -out signature.sign id.db
+OpenSSL> dgst -sha256 -prverify key.pem -signature signature.sign id.db
+Verification Failure
+error in dgst
 ```
