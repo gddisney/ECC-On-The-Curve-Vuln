@@ -4,7 +4,7 @@
 
 ### Issue:
 
-ECDSA RFC-6979 deterministic signatures will improperly validate keys crafted to be on the curve of X an Y values of the key.
+ECDSA RFC-6979 deterministic signatures will improperly validate keys crafted to be on the curve of X an Y values of the key. In this proof-of-concept ECDSA keys are generated with ```length = x+y ``` and ```d = random(length)-(x+y)```.
 
 ### Proof of Concept:
 
@@ -38,3 +38,7 @@ Results for 'On the Curve Vulnerability':
 RFC 6979: True
 FIPS-183-6: False
 ```
+
+### Recommendation:
+
+Use 'FIPS-183-6' signature schema. The 'On the Curve' vulnerability does not impact FIPS-183-6.
