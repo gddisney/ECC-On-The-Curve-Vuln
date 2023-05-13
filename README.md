@@ -4,7 +4,7 @@
 
 ### Issue:
 
-ECDSA RFC-6979 deterministic signatures will improperly validate keys crafted to be on the curve of X an Y values of the key. In this proof-of-concept ECDSA keys are generated with ```length = x+y ``` and ```d = random(length)-(x+y)```.
+ECDSA RFC-6979 deterministic signatures will improperly validate keys crafted to be on the curve of X an Y values of the key. In this proof-of-concept ECDSA keys are generated with ```length = len(x+y) ``` and ```d = random(length)-(x+y)```.
 
 ### Proof of Concept:
 
