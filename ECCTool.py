@@ -37,7 +37,7 @@ try:
         _y = True
     if _x == True and _y == True:
         print("---"*26)
-        print("Testing signature")
+        print("Testing deterministic-rfc6979 signature ")
         print("Exporting Key")
         print(_key.export_key(format='PEM'))
         fh = open('key.pem', 'w')
@@ -57,7 +57,9 @@ try:
         print("deterministic-rfc6979 signature is validated!")
         print("Successful exploitation of on the curve vulnerability!")
         print("---"*26)
+        rfc=True
         try:
+            print("Testing FIPS-183-6 signature")
             f = open('key.pem','rt')
             skey = _ECC.import_key(f.read())
             message = b"On the Curve vulnerability"
@@ -71,9 +73,15 @@ try:
             verifier.verify(h, signature)
             print("FIPS-183-6 signature is validated!")
             print("Successful exploitation of on the curve vulnerability!")
+            fips = True
         except ValueError:
             print("FIPS-183-6 Invalid Signature!")
-            exit()
+            fips = False
+            print("---"*26)
+            
+        print("Results for 'On the Curve Vulnerability': ")
+        print(f"RFC 6979: {rfc}")
+        print(f"FIPS-183-6: {fips}")
 except IndexError:
     print("Key invalid!")
     exit()
