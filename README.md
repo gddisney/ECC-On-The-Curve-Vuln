@@ -5,8 +5,9 @@
 ### Issue:
 
 ECDSA RFC-6979 deterministic signatures will improperly validate spoofed keys with forced public keys. In this proof-of-concept ECDSA keys are generated with ```length = len(x+y) ``` and ```d = random(length)-(x+y)```.  After analyzing PyCryptodome DSS code base, it was found the issue is in the RFC 6979 design not in implementation.
-https://github.com/Legrandin/pycryptodome/blob/master/lib/Crypto/Signature/DSS.py
-https://www.rfc-editor.org/rfc/rfc6979
+
+- https://github.com/Legrandin/pycryptodome/blob/master/lib/Crypto/Signature/DSS.py
+- https://www.rfc-editor.org/rfc/rfc6979
 
 ### Proof of Concept:
 
