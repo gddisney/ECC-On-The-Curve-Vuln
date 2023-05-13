@@ -3,6 +3,7 @@ from Crypto.PublicKey import ECC as _ECC
 from Crypto.Math.Numbers import Integer
 from Crypto.Signature import DSS
 from Crypto.Hash import SHA256
+from base64 import b64encode
 import random
 import string
 
@@ -37,9 +38,10 @@ try:
         _y = True
     if _x == True and _y == True:
         print("---"*26)
-        print("Testing deterministic-rfc6979 signature ")
         print("Exporting Key")
         print(_key.export_key(format='PEM'))
+        print("---"*26)
+        print("Testing deterministic-rfc6979 signature ")
         fh = open('key.pem', 'w')
         fh.write(_key.export_key(format='PEM'))
         fh.close()
@@ -49,6 +51,7 @@ try:
         h = SHA256.new(message)
         signer = DSS.new(skey, 'deterministic-rfc6979')
         signature = signer.sign(h)
+        print(f"Signature: {bytes(b64encode(signature))}")
         print("deterministic-rfc6979 signature generated")
         f = open('key.pem','rt')
         skey = _ECC.import_key(f.read())
@@ -64,18 +67,20 @@ try:
             skey = _ECC.import_key(f.read())
             message = b"On the Curve vulnerability"
             h = SHA256.new(message)
-            signer = DSS.new(skey, 'FIPS-183-6')
+            signer = DSS.new(skey, 'fips-186-3')
             signature = signer.sign(h)
             print("Signature generated")
+            print(f"Signature: {bytes(b64encode(signature))}")
             f = open('key.pem','rt')
             skey = _ECC.import_key(f.read())
-            verifier = DSS.new(skey, 'FIPS-183-6')
+            verifier = DSS.new(skey, 'fips-186-3')
             verifier.verify(h, signature)
             print("FIPS-183-6 signature is validated!")
             print("Successful exploitation of on the curve vulnerability!")
             fips = True
-        except ValueError:
-            print("FIPS-183-6 Invalid Signature!")
+            print("---"*26)
+        except ValueError as e:
+            print(f"FIPS-183-6 Error {e}!")
             fips = False
             print("---"*26)
             
