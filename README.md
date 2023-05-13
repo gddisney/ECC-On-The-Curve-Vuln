@@ -1,4 +1,4 @@
-# ECC-On-The-Curve-Vuln
+# ECC On The Curve Vulnerability
 
 ## Exploiting RFC-6979 Signatures
 
