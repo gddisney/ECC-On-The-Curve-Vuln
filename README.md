@@ -37,7 +37,7 @@ deterministic-rfc6979 signature generated
 deterministic-rfc6979 signature is validated!
 Successful exploitation of on the curve vulnerability!
 ------------------------------------------------------------------------------
-Testing FIPS-183-6 signature
+Testing FIPS-186-3 signature
 Signature generated
 Signature: b'yKQZ+itxNbdgbYMHZ9B0dHYxLtX00qNrmy0xGcwi1ODbEmk344wiQAFGq5mDy3hlD9UyWyy8vb1rQrjPvZKBgMbisnmYSHtZRr0fnGLJW11hFIcd1Cd73D26YWjLOdlo'
 FIPS-183-6 signature is validated!
@@ -45,5 +45,5 @@ Successful exploitation of on the curve vulnerability!
 ------------------------------------------------------------------------------
 Results for 'On the Curve Vulnerability':
 RFC 6979: True
-FIPS-183-6: True
+FIPS-186-3: True
 ```
