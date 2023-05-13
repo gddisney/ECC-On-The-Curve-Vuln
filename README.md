@@ -55,4 +55,11 @@ OpenSSL> dgst -sha256 -sign key.pem -out signature.sign id.db
 OpenSSL> dgst -sha256 -prverify key.pem -signature signature.sign id.db
 Verification Failure
 error in dgst
+OpenSSL> pkey -in key.pem
+-----BEGIN PRIVATE KEY-----
+MIG2AgEAMBAGByqGSM49AgEGBSuBBAAiBIGeMIGbAgEBBDCxxkp6uxcwPfu7QYSd
+qjki7PEfmzP/jlBgZHLuOWGbzzVwLQN1OHwZzGNJpOiCtt+hZANiAAQarFRaqflo
+I+d61SRvU8Za2EurxtW20eZzca7dnNYMYf3boIkDuAUU7FfO7l0/4iGzzvfUinng
+o4N+LZfQYcTxmdwlkWOrfzCjtHDix6EznPO/LlxTsV+zfTJ/ijTjeXk=
+-----END PRIVATE KEY-----
 ```
