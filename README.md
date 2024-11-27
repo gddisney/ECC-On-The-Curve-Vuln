@@ -1,5 +1,7 @@
 # ECC On The Curve Vulnerability
 
+Note this vulnerability has been resolved as 11/2024. If you are using 3.17.0 or older versions upgrade.
+
 ## Exploiting ECDSA Signatures
 
 ### Issue:
